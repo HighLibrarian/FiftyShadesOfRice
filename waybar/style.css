@@ -1,0 +1,116 @@
+@import "colors/gruvbox-material.css";
+
+/*
+========================================
+WAYBAR CSS CHEAT SHEET (BEGINNER NOTES)
+========================================
+
+1) Color variables (from colors/gruvbox-material.css)
+    - Example: @fg, @bg0, @blue
+    - Use them like: color: @fg;
+    - Why: easy theme changes in one place.
+
+2) Selector basics used in this file
+    - *                    -> all elements
+    - window#waybar        -> main Waybar window
+    - tooltip              -> popup tooltip box
+    - #workspaces          -> workspace module container
+    - #workspaces button   -> each workspace button
+    - .modules-left        -> class selector (left module group)
+    - #custom-power        -> specific custom module by id
+
+3) Common properties in this file
+    - color: text color
+    - background-color: background color
+    - margin: outside spacing (top right bottom left)
+    - padding: inside spacing
+    - border-radius: round corners
+    - font-size: text size
+    - font-weight: text thickness (700/800 = bold)
+    - min-width: smallest allowed width
+    - transition: animation between value changes
+
+4) Spacing shorthand examples
+    - margin: 11px 0;      -> top/bottom 11px, left/right 0
+    - margin: 0 2px;       -> top/bottom 0, left/right 2px
+    - padding: 2px 5px;    -> top/bottom 2px, left/right 5px
+    - border-radius: 0 0 10px 10px; -> TL TR BR BL
+
+5) Useful notes from your current config
+    - Global reset is used: all: unset; (removes many defaults)
+    - Base text color is set on waybar: color: @fg;
+    - Workspace button text is hidden: color: transparent;
+    - Active workspace changes background to @blue.
+
+6) Quick edit guide
+    - Change all text color: edit "color: @fg;" in window#waybar
+    - Change theme colors: edit values in colors/gruvbox-material.css
+    - Increase spacing: raise margin/padding px values
+    - Make corners more round: increase border-radius values
+*/
+ 
+
+*{
+    all: unset; /* Reset all inherited styles */
+    font-family: monospace;
+}
+
+window#waybar {
+    background-color: @bg0;
+    color: @fg;
+    border-radius: 0 0 10px 10px
+}
+tooltip {
+    background-color: @bg0;
+    border-radius: 0 0 10px 10px;
+    color: @fg;
+}
+
+#workspaces {
+    min-width: 100px;
+    font-size: 0.2em;
+    padding: 2px 5px;
+    margin: 11px 0;
+    border-radius: 99px;
+}
+
+
+#workspaces button {
+    background-color: @bg4;
+    color: transparent;
+    padding: 0px 5px;
+    border-radius: 99px;
+    margin: 0 2px;
+    min-width: 4px
+}
+
+#workspaces button.active {
+    background-color: @blue;
+    min-width: 1.2rem;
+    font-weight: 800;
+    transition: none
+}
+
+#clock{
+    margin: 0 15px;
+    /* font-weight: 700;
+    font-size: 1.12rem; */
+}
+
+
+
+.modules-left{
+    margin-left: 15px;
+}
+
+.modules-right{
+    margin-right: 30px;
+}
+
+#custom-power {
+    margin-left: 15px; /* Adjust this value to increase spacing */
+}
+
+#custom-notification {
+    margin-left: 15px;
+}

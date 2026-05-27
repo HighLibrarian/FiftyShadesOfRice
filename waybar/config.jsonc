@@ -1,0 +1,170 @@
+{
+    // Bar geometry
+    "layer": "top",
+    "width": 1000,
+    "height": 15,
+
+    // Module placement
+    "modules-left": 
+    [
+        "clock",
+        "pulseaudio"
+          
+        //"hyprland/window" - name of the active window
+        
+    ],
+    "modules-center": 
+    [
+      
+        "hyprland/workspaces"
+
+    ],
+    "modules-right":
+    [
+        "battery",
+        "network",
+        "custom/notification",
+        "custom/power"
+   
+    ],
+
+
+
+    // Clock: click toggles compact/full date format
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %d %B %Y [W%V]}",
+        "on-click": "waybar -m clock toggle-format"
+    },
+
+
+
+
+
+    // Power button (launch rofi power menu)
+    // power menu
+    "custom/power": {
+        "format": "",
+        "on-click": "~/.config/rofi/powermenu/power-menu.sh;"
+    },
+
+
+
+    "hyprland/workspaces": {
+        // Use workspace numbers as icons
+        "format": "{icon}",
+        // Click switches to selected workspace
+        "on-click": "activate",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5"
+        },
+        "persistent-workspaces": {
+                "*": 5 // 5 workspaces by default on every monitor
+              //  "HDMI-A-1": 3 // but only three on HDMI-A-1
+        }
+    },
+
+    "battery": {
+        // Refresh every minute
+        "interval": 60,
+        "format": "{icon} {capacity}%  ",
+        "format-icons": {
+        // Icon ramps from empty -> full
+        "default":
+            [
+                "󰂎", 
+                "󰁺", 
+                "󰁻", 
+                "󰁼", 
+                "󰁽", 
+                "󰁾", 
+                "󰁿", 
+                "󰂀", 
+                "󰂁", 
+                "󰂂", 
+                "󰁹"
+            ],
+        // Icon ramps while charging
+        "charging": 
+            [
+                "󰢟", 
+                "󰢜", 
+                "󰂆", 
+                "󰂇", 
+                "󰂈", 
+                "󰢝", 
+                "󰂉", 
+                "󰢞", 
+                "󰂊", 
+                "󰂋", 
+                "󰂅"
+            ]
+        }
+    },
+
+    "network": {
+        // Wi-Fi display and tooltip details
+        "format-wifi":          " {signalStrength}%",
+        "tooltip-format-wifi":  "  {essid} \n {signalStrength}%  \n󰲐 {ipaddr} \n " ,
+    "format-ethernet":          "󰈀  Connected",
+        "format-disconnected":  "  Offline",
+
+    // Click opens network manager applet
+        "on-click":   "adwaita-network",
+        "tooltip":true
+    },
+
+
+    // audio
+    "pulseaudio": {
+        "format": " {icon} {volume}% ",
+        "format-bluetooth": " {icon}    {volume}% ",
+        "format-muted": " ",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        // 1% volume per scroll tick
+        "scroll-step": 1,
+        // Left click opens mixer
+        "on-click": "pavucontrol",
+        // Hide virtual DSP sink from module cycling
+        "ignored-sinks": ["Easy Effects Sink"]
+    },
+
+
+    // notifications
+    "custom/notification": {
+    // {0} is unread count from swaync-client output
+    "tooltip": true,
+    "format": "{icon}:{0}",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    // Poll swaync for icon + unread count
+    "exec": "swaync-client -swb",
+    // Left click toggles panel, right click toggles DND
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  }
+}
