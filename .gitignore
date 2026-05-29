@@ -1,0 +1,27 @@
+# ignore everything
+*
+
+# allow these folders
+!Hypr/
+!waybar/
+!kitty/
+!rofi/
+!waypaper/
+
+# allow their contents
+hypr/*
+waybar/*
+kitty/*
+rofi/*
+waypaper/*
+
+# but unignore the actual files inside them
+!hypr/**
+!waybar/**
+!kitty/**
+!rofi/**
+!waypaper/**
+
+# allow this single file
+!starship.toml
+!.gitignore
