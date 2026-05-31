@@ -98,7 +98,6 @@ tooltip {
 }
 
 
-
 .modules-left{
     margin-left: 15px;
 }
@@ -112,5 +111,9 @@ tooltip {
 }
 
 #custom-notification {
+    margin-left: 15px;
+}
+
+#bluetooth{
     margin-left: 15px;
 }
