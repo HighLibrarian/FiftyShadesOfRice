@@ -32,8 +32,11 @@ if [ "$battery_status" = "Charging" ];
 then
     battery_icon="$charging_icon"
 
+
+    battery_chargetime=$(echo "$battery_output" | awk -F'[, ]+' '{print $5}')
+
     # Output the battery percentage and icon
-    echo "$battery_icon $battery_percentage%"
+    echo "$battery_icon $battery_percentage% | $time_icon $battery_chargetime (charging)"
 else
     # Output the battery percentage and icon
     echo "$battery_icon $battery_percentage% | $time_icon $battery_dischargetime"
