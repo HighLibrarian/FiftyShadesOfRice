@@ -23,9 +23,10 @@
     [
         "battery",
         "network",
-        "custom/notification",
-        "custom/power",
-        "bluetooth"
+        "bluetooth",
+        "custom/notification",        
+        "custom/power"
+      
    
     ],
 
