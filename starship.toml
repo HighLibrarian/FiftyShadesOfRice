@@ -74,7 +74,7 @@ format = '[](bold fg:255)[ $symbol ]($style)[](bold fg:255)'
 
 [os.symbols]
 Fedora  = "󰣛"
-Kubuntu = ""
+Ubuntu  = "󰕈"
 Windows = "󰍲"
 
 
@@ -101,7 +101,7 @@ show_always = true
 
 [directory]
 home_symbol = " "
-read_only = "  "
+read_only   = "  "
 style = "bg:255 fg:240"
 truncation_length = 2
 truncation_symbol = ".../"
@@ -109,14 +109,14 @@ format = '[](bold fg:255)[󰉋 → $path]($style)[](bold fg:255)'
 
 
 [directory.substitutions]
-"Desktop" = "  "
+"Desktop"   = "  "
 "Documents" = "  "
 "Downloads" = "  "
-"Music" = " 󰎈 "
-"Pictures" = "  "
-"Videos" = "  "
-"GitHub" = " 󰊤 "
-"Games" = "  "
+"Music"     = " 󰎈 "
+"Pictures"  = "  "
+"Videos"    = "  "
+"GitHub"    = " 󰊤 "
+"Games"     = "  "
 
 [cmd_duration]
 min_time = 0
