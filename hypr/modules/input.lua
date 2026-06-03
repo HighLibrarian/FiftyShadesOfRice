@@ -22,12 +22,21 @@ hl.config({
     },
 })
 
+
+-- horizontal movement switches workspace
 hl.gesture({
     fingers = 3,
     direction = "horizontal",
     action = "workspace"
 })
 
+-- SUPER + 3 fingers up closes active window.
+hl.gesture({
+    fingers = 3,
+    direction = "up",
+    mods = "SUPER",
+    action = "close"
+})
 
 -- media and volume control with 4-finger vertical swipes and taps
 hl.gesture({ 
