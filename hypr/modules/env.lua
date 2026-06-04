@@ -6,7 +6,7 @@
 
 hl.env("QT_QPA_PLATFORMTHEME", "kde") -- Use KDE's platform theme (for GTK apps, see below)
 
-hl.env("HYPRSHOT_DIR", "~/Pictures/Screenshots/")
+hl.env("HYPRSHOT_DIR", "Pictures/Screenshots")
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
