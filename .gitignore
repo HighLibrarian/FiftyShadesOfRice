@@ -25,3 +25,4 @@ waypaper/*
 # allow this single file
 !starship.toml
 !.gitignore
+!README.md
