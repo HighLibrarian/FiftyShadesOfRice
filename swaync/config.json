@@ -72,24 +72,10 @@
                     "command": "bash -c 'hyprpicker -a -f hex -n'"
                 },
                 {
-                    "label": "",
+                    "label": " ",
                     "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/mictoggle --silent'",
-                    "update-command": "bash -c '$HOME/.local/bin/mictoggle --is-muted'"
-                },
-                {
-                    "label": "",
-                    "command": "hyprctl dispatch exec alacritty -- -e htop ; swaync-client -cp"
-                },
-                {
-                    "label": "󰃟",
-                    "type": "toggle",
-                    "command": "bash -c '$HOME/.local/bin/themesw'",
-                    "update-command": "bash -c '[ $($HOME/.local/bin/themesw --current) = light ] && echo true || echo false'"
-                },
-                {
-                    "label": "",
-                    "command": "hyprctl dispatch exec nwg-look ; swaync-client -cp"
+                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && /usr/bin/wpctl set-mute 61 1 || /usr/bin/wpctl set-mute 61 0'",
+                    "update-command": "sh -c '/usr/bin/wpctl get-volume 61 | grep -q \"\\[MUTED\\]\" && echo true || echo false'"
                 },
                 {
                     "label": "",
