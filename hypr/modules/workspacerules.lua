@@ -16,4 +16,4 @@
 --     rounding    = 0,
 -- })
 
-hl.workspace_rule({workspace = "3", default = true})
+hl.workspace_rule({workspace = "1", default = true})
