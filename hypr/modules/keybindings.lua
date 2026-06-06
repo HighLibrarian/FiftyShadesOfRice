@@ -22,6 +22,9 @@ hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
+
+
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("swaync-client -t -sw")) -- notification center
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
