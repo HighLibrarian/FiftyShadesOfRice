@@ -264,6 +264,7 @@
 	margin-bottom: 5px;
 	background: @background-alt;
 	box-shadow: var(--shadow);
+	allignment: center
 }
 
 .widget-buttons-grid button {
