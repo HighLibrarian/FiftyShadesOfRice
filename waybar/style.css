@@ -103,11 +103,12 @@ tooltip {
 }
 
 .modules-right{
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 #custom-power {
     margin-left: 15px; /* Adjust this value to increase spacing */
+    margin-right: 15px;
 }
 
 #custom-notification {
