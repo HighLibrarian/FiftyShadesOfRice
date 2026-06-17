@@ -29,9 +29,11 @@ starship/*
 !waypaper/**
 !swaync/**
 
+# re ignore single files
+hypr/modules/monitors.lua
+hypr/modules/monitors.conf
+
 # allow this single file
 !starship.toml
 !.gitignore
 !README.md
-hypr/modules/monitors.lua
-hypr/modules/monitors.conf
