@@ -8,6 +8,8 @@
 !rofi/
 !waypaper/
 !swaync/
+!fish/
+!starship/
 
 # allow their contents
 hypr/*
@@ -16,6 +18,8 @@ kitty/*
 rofi/*
 waypaper/*
 swaync/*
+fish/*
+starship/*
 
 # but unignore the actual files inside them
 !hypr/**
