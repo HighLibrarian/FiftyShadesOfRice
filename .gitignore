@@ -31,5 +31,3 @@ swaync/*
 !README.md
 hypr/modules/monitors.lua
 hypr/modules/monitors.conf
-hypr/modules/monitors.lua
-hypr/modules/monitors.lua
