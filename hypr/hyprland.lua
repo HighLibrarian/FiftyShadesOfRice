@@ -10,7 +10,7 @@
 -- require("myColors")
 
 require("modules.keybindings")
-require("monitors")
+require("modules.monitors")
 require("modules.env")
 require("modules.autostart")
 require("modules.decorations")
