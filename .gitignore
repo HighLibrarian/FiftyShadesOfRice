@@ -7,6 +7,7 @@
 !kitty/
 !rofi/
 !waypaper/
+!swaync/
 
 # allow their contents
 hypr/*
@@ -14,6 +15,7 @@ waybar/*
 kitty/*
 rofi/*
 waypaper/*
+swaync/*
 
 # but unignore the actual files inside them
 !hypr/**
@@ -21,6 +23,7 @@ waypaper/*
 !kitty/**
 !rofi/**
 !waypaper/**
+!swaync/**
 
 # allow this single file
 !starship.toml

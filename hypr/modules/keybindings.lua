@@ -10,11 +10,38 @@ local browser       = "~/.config/hypr/scripts/start-edge.sh"
 local statusbar     = "~/.config/waybar/scripts/launch.sh"
 local notifications = "swaync-client -t -sw"
 local missioncenter = "flatpak run io.missioncenter.MissionCenter"
+local appcloseure   = "~/.config/hypr/scripts/safe-close.sh"
 
 -- keys and buttons
 local mainMod       = "SUPER"
 local lmb           = "mouse:272"
 local rmb           = "mouse:273"
+
+
+
+
+-----------------------------
+-- functions --
+
+
+local function safe_close_active_window()
+    -- Fetch active window info in JSON format
+    local handle = io.popen("hyprctl activewindow -j")
+    if not handle then return end
+    
+    local result = handle:read("*a")
+    handle:close()
+
+    -- Quick string check for the tag to avoid needing heavy external JSON parsers
+    -- This looks for `"protected"` inside the "tags" array of the hyprctl JSON output
+    if result:find('"tags":%s*%[[^%]]*"protected"[^%]]*%]') then
+        -- Optional: Trigger a desktop notification to tell you it's blocked
+        os.execute("notify-send 'Action Blocked' 'This window is protected!' --icon=dialog-warning")
+    else
+        -- If not protected, close it safely
+        hl.exec_cmd("hyprctl dispatch killactive")
+    end
+end
 
 
 --------------------------
@@ -26,6 +53,7 @@ hl.bind("CTRL + ALT + DELETE",hl.dsp.exec_cmd("command -v hyprshutdown >/dev/nul
 
 -- close window
 hl.bind(mainMod .. " + Q",    hl.dsp.window.close())
+
 
 -- toggle tiling mode for active window
 hl.bind(mainMod .. " + T",    hl.dsp.window.float({ action = "toggle" }))

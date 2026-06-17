@@ -48,6 +48,18 @@ hl.window_rule({
     animation = "slide top"
 })
 
+
+
+
+
+hl.window_rule({
+    match = { title = ".*Fluxys - Office.*"},
+    tag = "protected"
+})
+
+
+
+
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
