@@ -11,7 +11,7 @@
 !fish/
 !starship/
 
-# allow their contents
+# allow their contents (but NOT recursively unignore everything)
 hypr/*
 waybar/*
 kitty/*
@@ -21,19 +21,21 @@ swaync/*
 fish/*
 starship/*
 
-# but unignore the actual files inside them
+# now unignore everything inside those folders
 !hypr/**
 !waybar/**
 !kitty/**
 !rofi/**
 !waypaper/**
 !swaync/**
+!fish/**
+!starship/**
 
-# re ignore single files
+# re-ignore specific files
 hypr/modules/monitors.lua
 hypr/modules/monitors.conf
 
-# allow this single file
+# allow these single files
 !starship.toml
 !.gitignore
 !README.md
