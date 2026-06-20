@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
-focused=$(hyprctl -j activewindow)
 
-is_protected=$(echo "$focused" | jq -r '.tags[]?' | grep -qx "protected" && echo yes || echo no)
-
-if [[ "$is_protected" == "yes" ]]; then
-    if zenity --question --text="This window is protected. Close it?"; then
-        hyprctl dispatch killactive
-    fi
-else
-    hyprctl dispatch killactive
+if hyprctl activewindow | grep -q "tags:.*protected"; then
+    notify-send "Protected Window" "Use SUPER+SHIFT+Q to force close." --icon=dialog-warning
+    exit 1
 fi
+
+hyprctl dispatch "hl.dsp.window.close()"
