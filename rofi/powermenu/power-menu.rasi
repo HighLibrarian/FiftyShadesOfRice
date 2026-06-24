@@ -14,7 +14,7 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    font:                        "JetBrains Mono Nerd Font";
+    font:                        "CaskaydiaCove NF";
     background:                  #1d2021;
     background-alt:              #282828;
     surface:                     #2f3436;
@@ -78,7 +78,7 @@ dummy {
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
-    str:                         " System";
+    str:                         "  System";
     padding:                     12px;
     border-radius:               12px;
     background-color:            @urgent;
