@@ -10,6 +10,7 @@ local browser       = "~/.config/hypr/scripts/start-edge.sh"
 local statusbar     = "~/.config/waybar/scripts/launch.sh"
 local notifications = "swaync-client -t -sw"
 local missioncenter = "flatpak run io.missioncenter.MissionCenter"
+local emotejipicker = "omniglyph"
 
 -- save close protected windows
 local safeCloseScript = "~/.config/hypr/scripts/safe-close.sh"
@@ -74,6 +75,9 @@ hl.bind("Print",                hl.dsp.exec_cmd(screenshot))
 
 -- open the file manager
 hl.bind(mainMod .. " + E",      hl.dsp.exec_cmd(fileManager))
+
+-- open the femoji picker
+hl.bind(mainMod .. " + semicolon",      hl.dsp.exec_cmd(emotejipicker))
 
 -- open missioncenter
 hl.bind("CTRL+SHIFT+ESCAPE",    hl.dsp.exec_cmd(missioncenter))
