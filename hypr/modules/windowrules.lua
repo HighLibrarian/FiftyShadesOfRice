@@ -2,22 +2,24 @@
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
+-- Docs:
+-- https://wiki.hypr.land/Configuring/Basics/Window-Rules/
+-- https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
--- Example window rules that are useful
 
+-- =================================
+-- =  MARK: GLOBAL WINDOW RULES    =
+-- =================================
+
+-- Ignore maximize requests from all apps
 hl.window_rule({
-    -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
     match = { class = ".*" },
-
     suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
 
+-- Fix some dragging issues with XWayland
 hl.window_rule({
-    -- Fix some dragging issues with XWayland
     name  = "fix-xwayland-drags",
     match = {
         class      = "^$",
@@ -27,83 +29,88 @@ hl.window_rule({
         fullscreen = false,
         pin        = false,
     },
-
     no_focus = true,
 })
 
 
-hl.window_rule({
-    name = "waypaper",
-    match = {
-        title = "waypaper",
-    },
-    float = true,
-    center = true
-})
+-- =================================
+-- =  MARK: POPUP HELPER FUNCTION  =
+-- =================================
+
+-- Creates uniform dropdown popups for Waybar
+local function BarDropDown(name, MatchProp, w, h, y)
+    hl.window_rule({
+        name = name,
+        match = MatchProp,
+        animation = "slide top",
+        float = true,
+        size = { w, h },
+        move = {
+            "(monitor_w - " .. w .. ") / 2",
+            tostring(y or 50),
+        },
+        dim_around = true,
+    })
+end
 
 
-hl.window_rule({
+-- =================================
+-- =  MARK: WAYBAR POPUP WINDOWS   =
+-- =================================
+
+BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500, 600, 40)
+BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0 )
+BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40)
+
+
+-- =================================
+-- =  MARK: WORKSPACE MOVEMENT     =
+-- =================================
+
+-- Move all windows with tag "remote" to workspace 10
+hl.window_rule({match = { tag = "remote" },workspace = 10})
+hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
+
+
+
+
+
+
+-- =================================
+-- =  MARK: LAYER RULES            =
+-- =================================
+
+hl.layer_rule({
     name = "notification-animations",
-    match = {namespace = "swaync-control-center"},
+    match = { namespace = "swaync-control-center" },
     animation = "slide top"
 })
 
 
+-- =================================
+-- =  MARK: SPECIAL WINDOW RULES   =
+-- =================================
 
--- MARK: Protected
-
+-- YouTube tabs: keep opacity unchanged
 hl.window_rule({
-    match = { title = ".*FLX.*"},
-    tag = "protected"
+    match = { title = ".*YouTube.*" },
+    opacity = "1.0 override 1.0 override",
+    no_dim = true,
 })
 
 
-hl.window_rule({
-    match = { class = "discord"},
-    tag = "protected"
+-- =================================
+-- =  MARK: TAGGING RULES          =
+-- =================================
+
+-- Protected windows
+hl.window_rule({ match = { title = ".*FLX.*" }, tag = "protected" })
+hl.window_rule({ match = { class = "discord" }, tag = "protected" })
+hl.window_rule({ match = { class = "code"    }, tag = "protected" })
 
 
-    
-})
+-- social windows
+hl.window_rule({ match = { class = "discord" }, tag = "social" })
 
-
-
-
-
--- WINDOW RULES
-hl.window_rule({
-    match       = { class = "flameshot" },
-    no_anim     = true,
-    pin         = true,
-    float       = true,
-    decorate    = false,
-    no_blur     = true,
-    no_shadow   = true,
-})
-hl.window_rule({
-    match   = { class = "flameshot", title = "flameshot" },
-    move    = { 0, 0 },
-})
-hl.window_rule({
-    match = { class = "flameshot", title = "flameshot-pin" },
-    move  = { "cursor_x-(window_w*0.5)", "cursor_y-(window_h*0.5)" },
-})
-
-
-
--- Layer rules also return a handle.
--- local overlayLayerRule = hl.layer_rule({
---     name  = "no-anim-overlay",
---     match = { namespace = "^my-overlay$" },
---     no_anim = true,
--- })
--- overlayLayerRule:set_enabled(false)
-
--- Hyprland-run windowrule
--- hl.window_rule({
---     name  = "move-hyprland-run",
---     match = { class = "hyprland-run" },
-
---     move  = "20 monitor_h-120",
---     float = true,
--- })
+-- Auto‑move to remote workspace
+hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
