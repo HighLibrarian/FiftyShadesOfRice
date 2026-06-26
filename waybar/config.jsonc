@@ -149,8 +149,14 @@
         },
         // 1% volume per scroll tick
         "scroll-step": 1,
-        // Left click opens mixer
-        "on-click": "pavucontrol",
+
+        // right click opens mixer
+        "on-click-right": "pavucontrol",
+
+        // use linux audio swticher to swith to next output
+        "on-click": "/home/$USER/.local/bin/las next-output",
+
+        
         // Hide virtual DSP sink from module cycling
         "ignored-sinks": ["Easy Effects Sink"]
     },
