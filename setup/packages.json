@@ -1,5 +1,19 @@
 {
   "rpm_base": ["tldr", "kitty", "fish","waybar","rofi", "swaync", "awww", "waypaper","onedrive"],
   "flatpak_base":["it.mijorus.gearlever", "io.missioncenter.MissionCenter", "org.localsend.localsend_app", "md.obsidian.Obsidian"],
-  "hyprland": ["hyprland", "hyprland-guiutils", "hypridle", "hyprlock", "hyprpaper", "hyprpwcenter", "hyprshutdown", "hyprshot","hyprpolkitagent", "hyprland-qt-support","hyprpicker"]
+  "hyprland": ["hyprland", "hyprland-guiutils", "hypridle", "hyprlock", "hyprpaper", "hyprpwcenter", "hyprshutdown", "hyprshot","hyprpolkitagent", "hyprland-qt-support","hyprpicker"],
+  "ScriptInstallers": [
+    {
+      "name":"Linux Audio Switcher",
+      "giturl":"https://github.com/v6belung/LinuxAudioSwitcher.git",
+      "installerdirectory": "LinuxAudioSwitcher",
+      "installer": "install.sh"
+    },
+    {
+      "name":"OmniGlyph",
+      "giturl":"https://github.com/pshycodr/omniglyph.git",
+      "installerdirectory": "OmniGlyph",
+      "installer": "scripts/install.sh"
+    }    
+  ]
 }
