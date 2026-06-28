@@ -5,13 +5,13 @@
     "cssPriority": "user",
 
     "control-center-width": 450,
-    "control-center-height": 600,
+    "control-center-height": 700,
 
     "fit-to-screen": false,
 
     "notification-window-width": 400,
     "notification-icon-size": 40,
-    "notification-body-image-height": 500,
+    "notification-body-image-height": 200,
     "notification-body-image-width": 500,
     "notification-inline-replies": true,
     "notification-2fa-action": false,
@@ -35,6 +35,7 @@
     ],
    
     "widget-config": {
+
         "backlight": {
             "device": "amdgpu_bl1",
             "label": "󰃠",
@@ -52,7 +53,7 @@
         },
 
         "mpris": {
-            "image-size": 100,
+            "image-size": 50,
             "image-radius": 10,
             "autohide": false,
             "blacklist": [ "org.mpris.MediaPlayer2.playerctld"]
@@ -72,14 +73,17 @@
                     "command": "bash -c 'hyprpicker -a -f hex -n'"
                 },
                 {
-                    "label": " ",
+                    "label": "  ",
                     "type": "toggle",
                     "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && /usr/bin/wpctl set-mute 61 1 || /usr/bin/wpctl set-mute 61 0'",
                     "update-command": "sh -c '/usr/bin/wpctl get-volume 61 | grep -q \"\\[MUTED\\]\" && echo true || echo false'"
                 },
                 {
-                    "label": "",
-                    "command": "swaync-client -cp ; bash -c $HOME/.config/rofi/bin/logout"
+                    "label": "  ",
+                    "type": "toggle",
+                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && swaync-client -cp & flatpak run org.localsend.localsend_app|| flatpak kill org.localsend.localsend_app'",
+                    "update-command": "sh -c 'flatpak ps | grep localsend && echo true || echo false"
+                    
                 }
             ]
         }
