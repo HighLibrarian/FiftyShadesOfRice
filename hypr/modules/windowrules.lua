@@ -61,6 +61,7 @@ end
 BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500, 600, 40)
 BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0 )
 BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40)
+BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40)
 
 
 -- =================================
@@ -69,8 +70,16 @@ BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 130
 
 -- Move all windows with tag "remote" to workspace 10
 hl.window_rule({match = { tag = "remote" },workspace = 10})
+
+-- Move all windows with tag "remote" to workspace magic
 hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
 
+-- Mova all games to workspace 1 and make them floating
+hl.window_rule({
+    name = "float-steam-games",
+    match = { class = "^steam_app_.*" },
+    fullscreen = true,
+})
 
 
 
@@ -111,6 +120,7 @@ hl.window_rule({ match = { class = "code"    }, tag = "protected" })
 
 -- social windows
 hl.window_rule({ match = { class = "discord" }, tag = "social" })
+hl.window_rule({ match = { class = "signal"  }, tag = "social" })
 
 -- Auto‑move to remote workspace
 hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
