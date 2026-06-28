@@ -10,6 +10,8 @@
 -- =================================
 -- =  MARK: GLOBAL WINDOW RULES    =
 -- =================================
+-- get our hostname in case we want host specific window rules
+local hostname = io.popen("hostname"):read("*l")
 
 -- Ignore maximize requests from all apps
 hl.window_rule({
@@ -74,12 +76,9 @@ hl.window_rule({match = { tag = "remote" },workspace = 10})
 -- Move all windows with tag "remote" to workspace magic
 hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
 
--- Mova all games to workspace 1 and make them floating
-hl.window_rule({
-    name = "float-steam-games",
-    match = { class = "^steam_app_.*" },
-    fullscreen = true,
-})
+-- Mova all games to workspace 9 and make them fullscreen
+hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },workspace = 9,fullscreen = true,})
+hl.window_rule({name = "steam",match = { class = "steam" },workspace = 1})
 
 
 
@@ -116,6 +115,7 @@ hl.window_rule({
 hl.window_rule({ match = { title = ".*FLX.*" }, tag = "protected" })
 hl.window_rule({ match = { class = "discord" }, tag = "protected" })
 hl.window_rule({ match = { class = "code"    }, tag = "protected" })
+hl.window_rule({ match = { class = "^steam_app_.*"    }, tag = "protected" })
 
 
 -- social windows
@@ -124,3 +124,19 @@ hl.window_rule({ match = { class = "signal"  }, tag = "social" })
 
 -- Auto‑move to remote workspace
 hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
+
+
+-- =================================
+-- =  MARK: System specifc         =
+-- =================================
+
+if hostname == "HyprStation-01" then
+    hl.window_rule({name = "flameshot-home",match = { class = "flameshot" },
+        float = true,
+        pin = true,
+        move = {0, -190},
+        size = {4520, 1920},
+    })
+end
+
+
