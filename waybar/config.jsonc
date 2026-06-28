@@ -135,16 +135,17 @@
     // audio
     "pulseaudio": {
         "format": " {icon} {volume}% ",
-        "format-bluetooth": " {icon}    {volume}% ",
+        "format-bluetooth": " {icon} {volume}%",
         "format-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
             "headset": "",
+            "hdmi": "󰽟",
+            "alsa_output.pci-0000_0f_00.4.iec958-stereo": "󰗅",
             "phone": "",
             "phone-muted": "",
             "portable": "",
-            "car": "",
             "default": ["", ""]
         },
         // 1% volume per scroll tick
