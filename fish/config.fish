@@ -4,3 +4,4 @@ set fish_greeting
 end
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 starship init fish | source
+set -U fish_user_paths $fish_user_paths ~/.local/bin
