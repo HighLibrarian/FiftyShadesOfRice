@@ -56,7 +56,7 @@ WAYBAR CSS CHEAT SHEET (BEGINNER NOTES)
 }
 
 window#waybar {
-    background-color: @bg0;
+    background-color: rgba(30, 30, 30, 0.7);
     color: @fg;
     border-radius: 0 0 10px 10px
 }
