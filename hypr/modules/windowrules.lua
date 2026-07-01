@@ -40,7 +40,7 @@ hl.window_rule({
 -- =================================
 
 -- Creates uniform dropdown popups for Waybar
-local function BarDropDown(name, MatchProp, w, h, y)
+local function BarDropDown(name, MatchProp, w, h, y,o)
     hl.window_rule({
         name = name,
         match = MatchProp,
@@ -52,6 +52,7 @@ local function BarDropDown(name, MatchProp, w, h, y)
             tostring(y or 50),
         },
         dim_around = true,
+        opacity = o
     })
 end
 
@@ -60,10 +61,10 @@ end
 -- =  MARK: WAYBAR POPUP WINDOWS   =
 -- =================================
 
-BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500, 600, 40)
-BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0 )
-BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40)
-BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40)
+BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500, 600, 40,0.85)
+BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0,1 )
+BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40, 0.85)
+BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40, 0.7)
 
 
 -- =================================
@@ -91,7 +92,8 @@ hl.window_rule({name = "steam",match = { class = "steam" },workspace = 1})
 hl.layer_rule({
     name = "notification-animations",
     match = { namespace = "swaync-control-center" },
-    animation = "slide top"
+    animation = "slide top",
+    ignore_alpha = 0.5
 })
 
 
@@ -112,9 +114,10 @@ hl.window_rule({
 -- =================================
 
 -- Protected windows
-hl.window_rule({ match = { title = ".*FLX.*" }, tag = "protected" })
-hl.window_rule({ match = { class = "discord" }, tag = "protected" })
-hl.window_rule({ match = { class = "code"    }, tag = "protected" })
+hl.window_rule({ match = { title = ".*FLX.*"          }, tag = "protected" })
+hl.window_rule({ match = { title = ".*DCK.*"          }, tag = "protected" })
+hl.window_rule({ match = { class = "discord"          }, tag = "protected" })
+hl.window_rule({ match = { class = "code"             }, tag = "protected" })
 hl.window_rule({ match = { class = "^steam_app_.*"    }, tag = "protected" })
 
 
@@ -124,6 +127,7 @@ hl.window_rule({ match = { class = "signal"  }, tag = "social" })
 
 -- Auto‑move to remote workspace
 hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
+hl.window_rule({ match = { class = "Wfica"          }, tag = "remote" })
 
 
 -- =================================
