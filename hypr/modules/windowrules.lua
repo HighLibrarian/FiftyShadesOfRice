@@ -65,6 +65,10 @@ BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500
 BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0,1 )
 BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40, 0.85)
 BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40, 0.7)
+BarDropDown("home-assistant",    { initial_title = "Home Assistant"       }, 900, 1000, 40, 0.7)
+
+
+
 
 
 -- =================================
@@ -128,6 +132,7 @@ hl.window_rule({ match = { class = "signal"  }, tag = "social" })
 -- Auto‑move to remote workspace
 hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
 hl.window_rule({ match = { class = "Wfica"          }, tag = "remote" })
+hl.window_rule({ match = { initial_class = "Vmware" }, tag = "remote" })
 
 
 -- =================================
