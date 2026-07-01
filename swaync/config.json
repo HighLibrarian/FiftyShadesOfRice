@@ -16,9 +16,9 @@
     "notification-inline-replies": true,
     "notification-2fa-action": false,
   
-    "timeout": 3,
+    "timeout": 5,
     "timeout-low": 2,
-    "timeout-critical": 6,
+    "timeout-critical": 10,
     
     "keyboard-shortcuts": true,
     "image-visibility": "when-available",
@@ -84,7 +84,19 @@
                     "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && swaync-client -cp & flatpak run org.localsend.localsend_app|| flatpak kill org.localsend.localsend_app'",
                     "update-command": "sh -c 'flatpak ps | grep localsend && echo true || echo false"
                     
-                }
+                },
+                {
+                    "label": "  ",
+                    "type": "toggle",
+                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && (swaync-client -cp & $HOME/.local/bin/waypaper &) || pkill -x waypaper'",
+                    "update-command": "sh -c 'pgrep -x waypaper && echo true || echo false'"
+                },
+                {
+                    "label": "  ",
+                    "type": "toggle",
+                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && (swaync-client -cp & steam -start steam://open/bigpicture &) || pkill -x steam'",
+                    "update-command": "sh -c 'pgrep -x steam && echo true || echo false'"
+                }                
             ]
         }
     }

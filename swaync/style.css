@@ -108,8 +108,8 @@
 }
 
 .control-center {
-	background: @center-bg;
-	border-radius: var(--border-radius);
+    background: rgba(30, 30, 30, 0.95); /* Example: Semi-transparent dark grey */
+    border-radius: 10px;
 	margin: 5px;
 	padding: 5px 5px 0 5px;
 }
