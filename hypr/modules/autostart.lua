@@ -31,6 +31,9 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("swaync") -- notifications
   hl.exec_cmd("/usr/libexec/hyprpolkitagent")
   
+  -- applications
+
+  hl.exec_cmd("flatpak run com.discordapp.Discord")
 
 -- =================================
 -- =  MARK: System specifc         =
@@ -46,7 +49,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/HyprStation-01.orp")
 
     -- load you hypridle desktop profile 
-    hl.exec_cmd("~/.config/hypridle/hypridle-desktop.conf")
+    hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-desktop.conf")
   end
 
 
@@ -54,7 +57,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("notify-send 'Loading config:' '" .. hostname .. "'")
 
     -- load you hypridle laptop profile 
-    hl.exec_cmd("~/.config/hypridle/hypridle-laptop.conf")
+    hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-laptop.conf")
 
   end
 
