@@ -4,7 +4,8 @@
 ----------------------------------
 local terminal      = "kitty"
 local fileManager   = "nautilus --new-window"
-local screenshot    = "hyprshot -m region"
+-- local screenshot    = "hyprshot -m region"
+local screenshot    = "flameshot gui"
 local menu          = "~/.config/rofi/launcher/app-launcher.sh"
 local browser       = "~/.config/hypr/scripts/start-edge.sh"
 local statusbar     = "~/.config/waybar/scripts/launch.sh"
@@ -45,6 +46,10 @@ hl.bind(mainMod .. " + T",    hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F",    hl.dsp.window.fullscreen({ action = "toggle" }))
 
 
+
+
+
+
 -----------------------------
 -- MARK: Apps and Launcher --
 -----------------------------
@@ -81,6 +86,11 @@ hl.bind(mainMod .. " + semicolon",      hl.dsp.exec_cmd(emotejipicker))
 
 -- open missioncenter
 hl.bind("CTRL+SHIFT+ESCAPE",    hl.dsp.exec_cmd(missioncenter))
+
+
+-- audio switcher
+hl.bind("SHIFT+ALT+M",    hl.dsp.exec_cmd("/home/$USER/.local/bin/las next-output"))
+
 
 --------------------------------
 -- MARK: Workspace management --
@@ -159,4 +169,4 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = tr
 -- MARK: disabled stuff --
 --------------------------
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
--- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only

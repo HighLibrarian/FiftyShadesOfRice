@@ -9,12 +9,13 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,run,filebrowser,window";
+	modi:                       "combi,drun,window";
     show-icons:                 true;
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    icon-theme:                 "Papirus";
+    window-thumbnail:           false;
+    display-combi:              "󰍉";
+    display-drun:               "";
+    display-window:             "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
@@ -26,9 +27,9 @@ configuration {
     background-alt:              #282828;
     surface:                     #2f3436;
     foreground:                  #d4be98;
-    selected:                    #7daea3;
-    active:                      #a9b665;
-    urgent:                      #ea6962;
+    selected:                    #2F3436;
+    active:                      #3f5255;
+    urgent:                      #5a4b3b;
 }
 
 /*****----- Main Window -----*****/
@@ -173,7 +174,7 @@ element selected.urgent {
     text-color:                  @foreground;
 }
 element selected.active {
-    background-color:            @urgent;
+    background-color:            @active;
     text-color:                  @foreground;
 }
 element-icon {

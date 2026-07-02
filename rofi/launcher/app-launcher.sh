@@ -15,5 +15,7 @@ theme='app-launcher'
 
 ## Run
 rofi \
-    -show drun \
+    -show combi \
+    -modi "combi,drun,window" \
+    -combi-modi "window,drun" \
     -theme ${dir}/${theme}.rasi

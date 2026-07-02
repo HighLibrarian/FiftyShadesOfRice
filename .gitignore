@@ -11,6 +11,12 @@
 !fish/
 !starship/
 !fonts/
+!setup/
+!hypridle/
+!linux-audio-switcher/
+!monique/
+!OpenRGB/
+!flameshot/
 
 # allow their contents (but NOT recursively unignore everything)
 hypr/*
@@ -22,6 +28,12 @@ swaync/*
 fish/*
 starship/*
 fonts/*
+setup/*
+hypridle/*
+linux-audio-switcher/*
+monique/*
+OpenRGB/*
+flameshot/*
 
 # now unignore everything inside those folders
 !hypr/**
@@ -33,10 +45,19 @@ fonts/*
 !fish/**
 !starship/**
 !fonts/**
+!setup/**
+!hypridle/**
+!linux-audio-switcher/**
+!monique/**
+!OpenRGB/**
+!flameshot/**
 
 # re-ignore specific files
 hypr/modules/monitors.lua
 hypr/modules/monitors.conf
+OpenRGB/logs
+fonts/.uuid
+fonts/*/.uuid
 
 # allow these single files
 !starship.toml
