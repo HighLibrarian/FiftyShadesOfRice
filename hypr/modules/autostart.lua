@@ -50,6 +50,9 @@ hl.on("hyprland.start", function ()
 
     -- load you hypridle desktop profile 
     hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-desktop.conf")
+
+    -- start onedrive
+    hl.exec_cmd("onedrive --sync")
   end
 
 
@@ -63,3 +66,4 @@ hl.on("hyprland.start", function ()
 
 
 end)
+
