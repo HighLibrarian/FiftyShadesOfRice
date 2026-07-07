@@ -34,11 +34,9 @@
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%A, %d %B %Y [W%V]}",
+        //"on-click": "flatpak run org.gnome.Calendar"
         "on-click": "waybar -m clock toggle-format"
     },
-
-
-
 
 
     // Power button (launch rofi power menu)
@@ -123,9 +121,10 @@
         // Wi-Fi display and tooltip details
         "format-wifi":              " {signalStrength}%",
         "tooltip-format-wifi":      "  {essid}\n {signalStrength}%\n󰲐 {ipaddr}\n󱇢 {gwaddr}\n󰛶 {bandwidthUpBits}\n󰛴 {bandwidthDownBits}" , 
-        "tooltip-format-ethernet":  "󰲐 {ipaddr}\n󱇢 {gwaddr}\n󰛶 {bandwidthUpBits}\n󰛴 {bandwidthDownBits}" ,
+        "tooltip-format-ethernet":  "󰲐 {ipaddr}\n󱇢 {gwaddr}\n󰛶 {bandwidthUpBits}\n󰛴 {bandwidthDownBits}\n󰈀 {ifname}" ,
         "format-ethernet":          "󰈀  Lan",
         "format-disconnected":      "  Offline",
+        "format-disabled":          "󰅛 disabled",
 
     // Click opens network manager applet
         "on-click":   "adwaita-network",
@@ -138,6 +137,7 @@
         "format": " {icon} {volume}% ",
         "format-bluetooth": " {icon} {volume}%",
         "format-muted": " ",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
