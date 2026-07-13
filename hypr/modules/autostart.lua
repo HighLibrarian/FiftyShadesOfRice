@@ -54,8 +54,6 @@ hl.on("hyprland.start", function ()
     -- load you hypridle desktop profile 
     hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-desktop.conf")
 
-
-
     -- load our secrets. note you might need to enter your password
     hl.exec_cmd("~./config/hypr/scripts/get-secrets.sh")
 
