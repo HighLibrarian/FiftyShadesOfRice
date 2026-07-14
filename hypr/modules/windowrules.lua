@@ -66,6 +66,7 @@ BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500
 BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40, 0.85)
 BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40, 0.7)
 BarDropDown("home-assistant",    { initial_title = "Home Assistant"       }, 900, 1000, 40, 0.7)
+-- BarDropDown("gnome-calendar",    { class = "org.gnome.Calendar"           }, 900, 1000, 40, 0.7)
 
 
 
@@ -106,11 +107,11 @@ hl.layer_rule({
 -- =================================
 
 -- YouTube tabs: keep opacity unchanged
-hl.window_rule({
-    match = { title = ".*YouTube.*" },
-    opacity = "1.0 override 1.0 override",
-    no_dim = true,
-})
+hl.window_rule({match = { title = ".*YouTube.*" },opacity = "1.0 override 1.0 override",no_dim = true})
+hl.window_rule({match = { class = "Plex" },opacity = "1.0 override 1.0 override",no_dim = true})
+
+
+
 
 
 -- =================================
@@ -123,11 +124,16 @@ hl.window_rule({ match = { title = ".*DCK.*"          }, tag = "protected" })
 hl.window_rule({ match = { class = "discord"          }, tag = "protected" })
 hl.window_rule({ match = { class = "code"             }, tag = "protected" })
 hl.window_rule({ match = { class = "^steam_app_.*"    }, tag = "protected" })
+hl.window_rule({ match = { class = "Horizon-client"   }, tag = "protected" })
 
 
 -- social windows
-hl.window_rule({ match = { class = "discord" }, tag = "social" })
-hl.window_rule({ match = { class = "signal"  }, tag = "social" })
+hl.window_rule({ match = { class = "discord"       }, tag = "social" })
+hl.window_rule({ match = { class = "signal"        }, tag = "social" })
+hl.window_rule({ match = { title = "WhatsApp Web"  }, tag = "social" })
+
+
+
 
 -- Auto‑move to remote workspace
 hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
