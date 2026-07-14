@@ -35,15 +35,18 @@ hl.on("hyprland.start", function ()
 
   hl.exec_cmd("flatpak run com.discordapp.Discord")
 
+    -- start onedrive
+    hl.exec_cmd("onedrive --sync")
+
 -- =================================
 -- =  MARK: System specifc         =
 -- =================================
 
   if hostname == "HyprStation-01" then
-    hl.exec_cmd("notify-send 'Loading config:' '" .. hostname .. "'")
+    hl.exec_cmd("notify-send 'Loaded config for ' '" .. hostname .. "'")
 
     -- load audio switcher
-    hl.exec_cmd("/home/bdw/.local/bin/las daemon")    
+    hl.exec_cmd("~/.local/bin/las daemon")    
     
     -- load rbg profile
     hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/HyprStation-01.orp")
@@ -51,8 +54,17 @@ hl.on("hyprland.start", function ()
     -- load you hypridle desktop profile 
     hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-desktop.conf")
 
-    -- start onedrive
-    hl.exec_cmd("onedrive --sync")
+
+
+    -- load our secrets. note you might need to enter your password
+    hl.exec_cmd("~./config/hypr/scripts/get-secrets.sh")
+
+    -- load lnxlink
+    hl.exec_cmd ("~/.local/bin/lnxlink -c ~/.config/LNXlink/config.yaml")
+
+    -- restore balanced powerplan
+    hl.exec_cmd ("tuned-adm profile balanced")
+
   end
 
 
