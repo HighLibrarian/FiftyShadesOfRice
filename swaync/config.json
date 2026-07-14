@@ -64,10 +64,9 @@
                 {
                     "label": "󰌪",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && /usr/bin/powerprofilesctl set power-saver || /usr/bin/powerprofilesctl set balanced'",
-                    "update-command": "sh -c 'profile=$(/usr/bin/powerprofilesctl get 2>/dev/null | tr -d \"[:space:]\"); [ \"$profile\" = \"power-saver\" ] && echo true || echo false'"
-                    
-                },
+                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && tuned-adm profile balanced || tuned-adm profile throughput-performance'",
+                    "update-command": "sh -c 'tuned-adm active | grep -q 'balanced' && echo true || echo false'"
+                },                    
                 {
                     "label": "󰴱",
                     "command": "bash -c 'hyprpicker -a -f hex -n'"
