@@ -89,7 +89,7 @@ hl.bind("CTRL+SHIFT+ESCAPE",    hl.dsp.exec_cmd(missioncenter))
 
 
 -- audio switcher
-hl.bind("SHIFT+ALT+M",    hl.dsp.exec_cmd("/home/$USER/.local/bin/las next-output"))
+hl.bind("SHIFT+ALT+F1",    hl.dsp.exec_cmd("/home/$USER/.local/bin/las next-output"))
 
 
 --------------------------------
