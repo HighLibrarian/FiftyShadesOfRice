@@ -13,6 +13,16 @@
 -- get our hostname in case we want host specific window rules
 local hostname = io.popen("hostname"):read("*l")
 
+-- Simple helper for file-based feature toggles.
+local function file_exists(path)
+    local file = io.open(path, "r")
+    if file then
+        file:close()
+        return true
+    end
+    return false
+end
+
 -- Ignore maximize requests from all apps
 hl.window_rule({
     name  = "suppress-maximize-events",
@@ -44,6 +54,7 @@ local function BarDropDown(name, MatchProp, w, h, y,o)
     hl.window_rule({
         name = name,
         match = MatchProp,
+        pin = false,
         animation = "slide top",
         float = true,
         size = { w, h },
@@ -82,11 +93,14 @@ hl.window_rule({match = { tag = "remote" },workspace = 10})
 -- Move all windows with tag "remote" to workspace magic
 hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
 
--- Mova all games to workspace 9 and make them fullscreen
-hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },workspace = 9,fullscreen = true,})
-hl.window_rule({name = "steam",match = { class = "steam" },workspace = 1})
-
-
+-- Move all games to workspace 9 and make them fullscreen
+if file_exists("/tmp/gamestreaming") then
+    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },monitor = "HEADLESS", fullscreen = true,})
+    hl.window_rule({name = "steam",match = { class = "steam" },monitor = "HEADLESS"})
+else
+    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },workspace = 9,fullscreen = true,})
+    hl.window_rule({name = "steam",match = { class = "steam" },workspace = 1})
+end
 
 
 
@@ -140,6 +154,9 @@ hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
 hl.window_rule({ match = { class = "Wfica"          }, tag = "remote" })
 hl.window_rule({ match = { initial_class = "Vmware" }, tag = "remote" })
 
+
+-- keyring prompts
+hl.window_rule({ match = { class = "gcr-prompter"}, pin = true, float = true})
 
 -- =================================
 -- =  MARK: System specifc         =
