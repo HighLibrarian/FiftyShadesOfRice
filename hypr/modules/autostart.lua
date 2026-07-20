@@ -52,7 +52,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/HyprStation-01.orp")
 
     -- load you hypridle desktop profile 
-    hl.exec_cmd("hypridle -s ~/.config/hypridle/hypridle-desktop.conf")
+    hl.exec_cmd("hypridle -c ~/.config/hypridle/hypridle-desktop.conf")
 
     -- load our secrets. note you might need to enter your password
     hl.exec_cmd("~./config/hypr/scripts/get-secrets.sh")
