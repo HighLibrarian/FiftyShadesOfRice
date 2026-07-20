@@ -62,10 +62,10 @@
         "buttons-grid": {
             "actions": [
                 {
-                    "label": "󰌪",
+                    "label": " 󰌪 ",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && tuned-adm profile balanced || tuned-adm profile throughput-performance'",
-                    "update-command": "sh -c 'tuned-adm active | grep -q 'balanced' && echo true || echo false'"
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-performance-profile-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-performance-profile-update.sh"
                 },                    
                 {
                     "label": "󰴱",
@@ -74,28 +74,34 @@
                 {
                     "label": "  ",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && /usr/bin/wpctl set-mute 61 1 || /usr/bin/wpctl set-mute 61 0'",
-                    "update-command": "sh -c '/usr/bin/wpctl get-volume 61 | grep -q \"\\[MUTED\\]\" && echo true || echo false'"
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-mic-mute-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-mic-mute-update.sh"
                 },
                 {
                     "label": "  ",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && swaync-client -cp & flatpak run org.localsend.localsend_app|| flatpak kill org.localsend.localsend_app'",
-                    "update-command": "sh -c 'flatpak ps | grep localsend && echo true || echo false"
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-localsend-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-localsend-update.sh"
                     
                 },
                 {
                     "label": "  ",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && (swaync-client -cp & $HOME/.local/bin/waypaper &) || pkill -x waypaper'",
-                    "update-command": "sh -c 'pgrep -x waypaper && echo true || echo false'"
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-waypaper-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-waypaper-update.sh"
                 },
                 {
                     "label": "  ",
                     "type": "toggle",
-                    "command": "sh -c '[ \"$SWAYNC_TOGGLE_STATE\" = \"true\" ] && (swaync-client -cp & steam -start steam://open/bigpicture &) || pkill -x steam'",
-                    "update-command": "sh -c 'pgrep -x steam && echo true || echo false'"
-                }                
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-steam-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-steam-update.sh"
+                },
+                {
+                    "label": "  ",
+                    "type": "toggle",
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-gamestreaming-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-gamestreaming-update.sh"
+                }
             ]
         }
     }
