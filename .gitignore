@@ -17,6 +17,7 @@
 !monique/
 !OpenRGB/
 !flameshot/
+!iris/
 
 # allow their contents (but NOT recursively unignore everything)
 hypr/*
@@ -34,7 +35,7 @@ linux-audio-switcher/*
 monique/*
 OpenRGB/*
 flameshot/*
-
+iris/*
 # now unignore everything inside those folders
 !hypr/**
 !waybar/**
@@ -51,6 +52,7 @@ flameshot/*
 !monique/**
 !OpenRGB/**
 !flameshot/**
+!iris/**
 
 # re-ignore specific files
 hypr/modules/monitors.lua
