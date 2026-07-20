@@ -23,7 +23,7 @@ configuration {
 /*****----- Global Properties -----*****/
 * {
     font:                        "JetBrains Mono Nerd Font 10";
-    background:                  #1d2021;
+    background:                  rgb(29, 32, 33, 0.95);
     background-alt:              #282828;
     surface:                     #2f3436;
     foreground:                  #d4be98;
@@ -73,10 +73,11 @@ inputbar {
     spacing:                     10px;
     padding:                     100px 60px;
     background-color:            transparent;
-    background-image:            url("~/Pictures/wallpapers/wallhaven-0wqe5p.jpg", width);
+    background-image:            url("~/.cache/rofi-bg.png", width);
     text-color:                  @foreground;
     orientation:                 horizontal;
     children:                    [ "textbox-prompt-colon", "entry", "dummy", "mode-switcher" ];
+
 }
 textbox-prompt-colon {
     enabled:                     true;
