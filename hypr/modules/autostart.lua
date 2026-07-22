@@ -35,8 +35,9 @@ hl.on("hyprland.start", function ()
 
   hl.exec_cmd("flatpak run com.discordapp.Discord")
 
-    -- start onedrive
-    hl.exec_cmd("onedrive --sync")
+  hl.exec_cmd("~/AppImages/obsidian.appimage")
+  -- start onedrive
+  hl.exec_cmd("onedrive --sync")
 
 -- =================================
 -- =  MARK: System specifc         =
@@ -46,7 +47,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("notify-send 'Loaded config for ' '" .. hostname .. "'")
 
     -- load audio switcher
-    hl.exec_cmd("~/.local/bin/las daemon")    
+    hl.exec_cmd("~/.local/bin/las daemon")
     
     -- load rbg profile
     hl.exec_cmd("openrgb --profile ~/.config/OpenRGB/HyprStation-01.orp")
@@ -62,6 +63,12 @@ hl.on("hyprland.start", function ()
 
     -- restore balanced powerplan
     hl.exec_cmd ("tuned-adm profile balanced")
+
+
+
+    -- load clipboard manager
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
   end
 

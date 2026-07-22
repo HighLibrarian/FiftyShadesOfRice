@@ -66,6 +66,9 @@ hl.bind(mainMod .. " + A",      hl.dsp.exec_cmd(notifications))
 -- open menu (definition)
 hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd(menu))
 
+-- open clipboard manager
+hl.bind(mainMod .. "+ V",        hl.dsp.exec_cmd 'cliphist list | rofi -dmenu -display-columns 2 -p "clipboard" -theme ~/.config/rofi/clipboard/clipboard.rasi| cliphist decode | wl-copy')
+
 -- open or restart statusbar (definition)
 hl.bind(mainMod .. " + W",      hl.dsp.exec_cmd(statusbar))
 
@@ -125,9 +128,12 @@ for workspaceid = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = workspaceid }))
 end
 
--- Example special workspace (scratchpad)
+-- Example special workspace (scratchpad, obsidian)
 hl.bind(mainMod .. " + S",                  hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S",          hl.dsp.window.move({ workspace = "special:magic" }))
+
+hl.bind(mainMod .. "+ O",                   hl.dsp.workspace.toggle_special("obsidian"))
+hl.bind(mainMod .. " + SHIFT + O",          hl.dsp.window.move({ workspace = "special:obsidian" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down",         hl.dsp.focus({ workspace = "e+1" }))
