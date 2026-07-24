@@ -67,8 +67,8 @@ hl.on("hyprland.start", function ()
 
 
     -- load clipboard manager
-    hl.exec_cmd("wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store -max-items 200")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store -max-items 200")
 
   end
 

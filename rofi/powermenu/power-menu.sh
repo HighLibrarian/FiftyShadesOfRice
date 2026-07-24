@@ -72,6 +72,7 @@ run_cmd() {
 		systemctl suspend
 	elif [[ $1 == '--logout' ]]; then
 		if has_cmd hyprshutdown && [[ "$is_hyprland" =~ [Hh]yprland ]]; then
+			~/.config/mqtt/send-mqtt-message.sh "hyprstation-01/session_state" "Shutdown"
 			hyprshutdown
 		elif has_cmd loginctl; then
 			loginctl terminate-user "$USER"

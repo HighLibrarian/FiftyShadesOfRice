@@ -1,0 +1,161 @@
+/*
+============================================================================
+Clipboard Rofi Theme (Beginner Notes)
+============================================================================
+
+Useful docs:
+- Layout tree: https://davatorium.github.io/rofi/2.0.0/rofi-theme.5/#basic-layout-structure
+- Window widget: https://davatorium.github.io/rofi/2.0.0/rofi-theme.5/#window
+- Widget properties: https://davatorium.github.io/rofi/2.0.0/rofi-theme.5/#widget-properties
+
+Quick test command:
+printf "Ikbencool1\nIkbencol12\nIkbencool123" | rofi -dmenu -theme /home/bdw/Repositories/FiftyShadesOfRice/rofi/playground.rasi
+
+How to read this file:
+- Each block (window, inputbar, listview...) styles one UI widget.
+- Rofi builds the UI as a tree of widgets.
+- If something looks wrong, comment out one block at a time to isolate it.
+*/
+
+
+soi
+/*
+WINDOW
+- This is the outer popup container.
+- width/height define popup size.
+- location:center keeps it centered on screen.
+- background-color uses alpha (0.95) for slight transparency.
+- border-radius rounds the popup corners.
+*/
+window{
+    width:            600px;
+    height:           300px;
+    location:         center;
+    border-radius:    14px;
+    background-color: rgb(29, 32, 33, 0.95);
+}
+
+/*
+MAINBOX
+- Root container inside window.
+- Keep this transparent so the window color is visible.
+- If mainbox/children are missing, you may see unexpected default colors.
+*/
+mainbox {
+    background-color: transparent;
+}
+
+
+/*
+PROMPT
+- Styles the left label in the input row.
+- Usually this is the mode label, but your launch command can override it
+    with -p "Clipboard".
+*/
+prompt {
+    background-color: transparent;
+    text-color: #4c8a8c;
+    padding: 0px;
+   
+}
+
+
+/*
+INPUTBAR
+- Horizontal bar that contains prompt + entry.
+- children order matters: [prompt,entry] means prompt first, then typing area.
+- margin moves the whole bar away from window edges.
+- padding adds inner space inside the bar.
+- border/border-color/border-radius shape and outline the bar.
+- spacing controls distance between prompt and entry.
+*/
+inputbar {
+    spacing: 10px; /* Distance between prompt and entry. */
+    padding: 8px 10px;
+    border: 2px;
+    border-color: #5e6366;
+    border-radius: 8px;
+    background-color: #202426;
+    children: [prompt,entry,button];
+    margin: 15px 15px;
+}
+
+
+/*
+ENTRY
+- Text field where you type search/filter text.
+- expand:true lets entry consume remaining horizontal space.
+- placeholder text appears when entry is empty.
+*/
+entry {
+    expand: true;
+    background-color: transparent;
+    text-color: #b9b4ad;
+    placeholder: "Search";
+    placeholder-color: #5e6366;
+    padding: 0px;
+}
+
+button {
+    expand: false;
+    content: " ";
+    vertical-align: 0.5;
+    action: "kb-custom-1";
+    background-color: transparent;
+    text-color: #b9b4ad;
+}
+
+/*
+LISTVIEW
+- Container for the result rows.
+- lines:15 means show up to 15 rows before scrolling.
+*/
+listview {
+    background-color: transparent;
+    lines: 15;
+}
+
+
+/*
+ELEMENT
+- Styles each row/item in the results list.
+- padding adds clickable breathing room inside each row.
+- margin separates rows from side edges.
+- border-radius rounds each row.
+*/
+element {
+    background-color: transparent;
+    padding: 8px 8px;
+    margin: 0px 15px;
+    border-radius: 8px;
+}
+
+/*
+SELECTED ELEMENT (normal state)
+- Highlight color for currently focused row.
+- This is the row you will select if you press Enter.
+*/
+element selected.normal {
+    background-color: #5e6366;}
+
+/*
+ELEMENT TEXT
+- Font and text color for row labels.
+- Keep background transparent so row backgrounds stay visible.
+*/
+element-text{
+    font: "JetBrains Mono 10";
+    background-color: transparent;
+    text-color: #d4be98;
+}
+
+/*
+ELEMENT ICON
+- Icon area for each row (if your script/output provides icons).
+- Transparent background keeps icon area blending with row background.
+*/
+element-icon {
+
+    background-color: transparent;
+}
+
