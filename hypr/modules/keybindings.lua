@@ -42,6 +42,14 @@ hl.bind(mainMod .. " + SHIFT + Q",    hl.dsp.window.close())
 -- toggle tiling mode for active window
 hl.bind(mainMod .. " + T",    hl.dsp.window.float({ action = "toggle" }))
 
+-- toggle tiling mode for active window and pin it accros all workspaces
+hl.bind(mainMod .. " + SHIFT + T", function()
+    hl.dispatch(hl.dsp.window.float({ action = "toggle" }))
+    hl.dispatch(hl.dsp.window.pin({ action = "toggle" }))
+end)
+
+
+
 -- toggle fullscreen mode for active window
 hl.bind(mainMod .. " + F",    hl.dsp.window.fullscreen({ action = "toggle" }))
 
