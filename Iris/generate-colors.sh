@@ -6,4 +6,4 @@ wallpaper=$(
 sleep 2
 
 cp "$wallpaper" ~/.cache/rofi-bg.png
-/home/bdw/.local/bin/iris "$wallpaper" --dark 1
+~/.local/bin/iris "$wallpaper" --dark 1
