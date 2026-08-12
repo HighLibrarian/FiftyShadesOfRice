@@ -31,7 +31,8 @@
       "mpris",
       "dnd",
       "notifications",
-      "buttons-grid"
+      "buttons-grid",
+      "volume"
     ],
    
     "widget-config": {
