@@ -77,8 +77,7 @@ BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500
 BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40, 0.85)
 BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40, 0.7)
 BarDropDown("home-assistant",    { initial_title = "Home Assistant"       }, 900, 1000, 40, 0.7)
--- BarDropDown("gnome-calendar",    { class = "org.gnome.Calendar"           }, 900, 1000, 40, 0.7)
-
+BarDropDown("flameshot",         { class = "flameshot"                    }, 500, 600, 40, 0.7)
 
 
 
@@ -93,12 +92,24 @@ hl.window_rule({match = { tag = "remote" },workspace = 10})
 -- Move all windows with tag "remote" to workspace magic
 hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
 
+
+-- move obsisian to its own workspace
+hl.window_rule({match = { initial_class = "obsidian" },workspace = "special:obsidian"})
+
+-- give special workspace windows another gradient
+hl.window_rule({
+  match        = { workspace = "special:obsidian" },
+  border_size = 4,
+  border_color = { colors = {"rgba(ff4d6dff)", "rgba(7c3aedff)"}, angle = 45 }
+})
+
+
 -- Move all games to workspace 9 and make them fullscreen
 if file_exists("/tmp/gamestreaming") then
-    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },monitor = "HEADLESS", fullscreen = true,})
+    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },monitor = "HEADLESS", fullscreen = true,  idle_inhibit = "always"})
     hl.window_rule({name = "steam",match = { class = "steam" },monitor = "HEADLESS"})
 else
-    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },workspace = 9,fullscreen = true,})
+    hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },workspace = 9,fullscreen = true, idle_inhibit = "always"})
     hl.window_rule({name = "steam",match = { class = "steam" },workspace = 1})
 end
 
@@ -121,8 +132,8 @@ hl.layer_rule({
 -- =================================
 
 -- YouTube tabs: keep opacity unchanged
-hl.window_rule({match = { title = ".*YouTube.*" },opacity = "1.0 override 1.0 override",no_dim = true})
-hl.window_rule({match = { class = "Plex" },opacity = "1.0 override 1.0 override",no_dim = true})
+hl.window_rule({match = { title = ".*YouTube.*" },opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
+hl.window_rule({match = { class = "Plex" },opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
 
 
 
@@ -133,12 +144,12 @@ hl.window_rule({match = { class = "Plex" },opacity = "1.0 override 1.0 override"
 -- =================================
 
 -- Protected windows
-hl.window_rule({ match = { title = ".*FLX.*"          }, tag = "protected" })
-hl.window_rule({ match = { title = ".*DCK.*"          }, tag = "protected" })
-hl.window_rule({ match = { class = "discord"          }, tag = "protected" })
-hl.window_rule({ match = { class = "code"             }, tag = "protected" })
-hl.window_rule({ match = { class = "^steam_app_.*"    }, tag = "protected" })
-hl.window_rule({ match = { class = "Horizon-client"   }, tag = "protected" })
+hl.window_rule({ match = { title = ".*FLX.*"              }, tag = "protected" })
+hl.window_rule({ match = { title = ".*DCK.*"              }, tag = "protected" })
+hl.window_rule({ match = { class = "discord"              }, tag = "protected" })
+hl.window_rule({ match = { class = "code"                 }, tag = "protected" })
+hl.window_rule({ match = { class = "^steam_app_.*"        }, tag = "protected" })
+hl.window_rule({ match = { class = "Horizon-client"       }, tag = "protected" })
 
 
 -- social windows
@@ -163,12 +174,12 @@ hl.window_rule({ match = { class = "gcr-prompter"}, pin = true, float = true})
 -- =================================
 
 if hostname == "HyprStation-01" then
-    hl.window_rule({name = "flameshot-home",match = { class = "flameshot" },
-        float = true,
-        pin = true,
-        move = {0, -190},
-        size = {4520, 1920},
-    })
+    -- hl.window_rule({name = "flameshot-home",match = { class = "flameshot" },
+    --     float = true,
+    --     pin = true,
+    --     move = {0, -190},
+    --     size = {4520, 1920},
+    -- })
 end
 
 
