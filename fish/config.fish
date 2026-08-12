@@ -16,3 +16,5 @@ alias gtrep "cd ~/Repositories"
 alias gtdl "cd ~/Downloads"
 alias gthome "cd ~"
 alias cls "clear"
+
+bind \b backward-kill-word
