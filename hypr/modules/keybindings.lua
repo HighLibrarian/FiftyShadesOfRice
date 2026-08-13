@@ -12,6 +12,7 @@ local statusbar     = "~/.config/waybar/scripts/launch.sh"
 local notifications = "swaync-client -t -sw"
 local missioncenter = "flatpak run io.missioncenter.MissionCenter"
 local emotejipicker = "omniglyph"
+local clipboardman  = "~/.config/rofi/clipboard/clipboard-menu.sh"
 
 -- save close protected windows
 local safeCloseScript = "~/.config/hypr/scripts/safe-close.sh"
@@ -75,7 +76,7 @@ hl.bind(mainMod .. " + A",      hl.dsp.exec_cmd(notifications))
 hl.bind(mainMod .. " + D",      hl.dsp.exec_cmd(menu))
 
 -- open clipboard manager
-hl.bind(mainMod .. "+ V",        hl.dsp.exec_cmd 'cliphist list | rofi -dmenu -display-columns 2 -p "clipboard" -theme ~/.config/rofi/clipboard/clipboard.rasi| cliphist decode | wl-copy')
+hl.bind(mainMod .. "+ V",        hl.dsp.exec_cmd (clipboardman))
 
 -- open or restart statusbar (definition)
 hl.bind(mainMod .. " + W",      hl.dsp.exec_cmd(statusbar))

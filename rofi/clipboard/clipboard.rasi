@@ -61,6 +61,9 @@ prompt {
 }
 
 
+
+
+
 /*
 INPUTBAR
 - Horizontal bar that contains prompt + entry.
@@ -77,10 +80,29 @@ inputbar {
     border-color: #5e6366;
     border-radius: 8px;
     background-color: #202426;
-    children: [prompt,entry];
+    children: [prompt, entry, button-deleteitem, button-clearall];
     margin: 15px 15px;
 }
 
+/* delete the selected item, menu reopens */
+button-deleteitem {
+    expand: false;
+    background-color: transparent;
+    text-color: #b9b4ad;
+    content: "";
+    vertical-align: 0.5;
+    action: "kb-custom-2";
+}
+
+/* wipe entire clipboard history */
+button-clearall {
+    expand: false;
+    background-color: transparent;
+    text-color: #b9b4ad;
+    content: "󰩹";
+    vertical-align: 0.5;
+    action: "kb-custom-1";
+}
 
 /*
 ENTRY
