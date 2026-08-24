@@ -17,6 +17,8 @@ How to read this file:
 - If something looks wrong, comment out one block at a time to isolate it.
 */
 
+/*Load our color pallete file*/
+@import "~/.config/rofi/globals/global-properties.rasi"
 
 
 
@@ -33,7 +35,7 @@ window{
     height:           300px;
     location:         center;
     border-radius:    14px;
-    background-color: rgb(29, 32, 33, 0.95);
+    background-color: @menu-background;
 }
 
 /*
@@ -55,7 +57,7 @@ PROMPT
 */
 prompt {
     background-color: transparent;
-    text-color: #4c8a8c;
+    text-color: @text-prompt;
     padding: 0px;
    
 }
@@ -77,9 +79,9 @@ inputbar {
     spacing: 10px; /* Distance between prompt and entry. */
     padding: 8px 10px;
     border: 2px;
-    border-color: #5e6366;
+    border-color: @border-default;
     border-radius: 8px;
-    background-color: #202426;
+    background-color: @control-background;
     children: [prompt, entry, button-deleteitem, button-clearall];
     margin: 15px 15px;
 }
@@ -88,7 +90,7 @@ inputbar {
 button-deleteitem {
     expand: false;
     background-color: transparent;
-    text-color: #b9b4ad;
+    text-color: @text-muted;
     content: "";
     vertical-align: 0.5;
     action: "kb-custom-2";
@@ -98,7 +100,7 @@ button-deleteitem {
 button-clearall {
     expand: false;
     background-color: transparent;
-    text-color: #b9b4ad;
+    text-color: @text-muted;
     content: "󰩹";
     vertical-align: 0.5;
     action: "kb-custom-1";
@@ -113,9 +115,9 @@ ENTRY
 entry {
     expand: true;
     background-color: transparent;
-    text-color: #b9b4ad;
+    text-color: @text-muted;
     placeholder: "Search";
-    placeholder-color: #5e6366;
+    placeholder-color: @text-placeholder;
     padding: 0px;
 }
 
@@ -151,7 +153,8 @@ SELECTED ELEMENT (normal state)
 - This is the row you will select if you press Enter.
 */
 element selected.normal {
-    background-color: #5e6366;}
+    background-color: @selection-background;
+}
 
 /*
 ELEMENT TEXT
@@ -159,9 +162,9 @@ ELEMENT TEXT
 - Keep background transparent so row backgrounds stay visible.
 */
 element-text{
-    font: "JetBrains Mono 10";
+    font: @font-name;
     background-color: transparent;
-    text-color: #d4be98;
+    text-color: @text-primary;
 }
 
 /*

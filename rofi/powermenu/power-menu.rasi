@@ -13,15 +13,10 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
+@import "~/.config/rofi/globals/global-properties.rasi"
+
 * {
     font:                        "CaskaydiaCove NF";
-    background:                  #1d2021;
-    background-alt:              #282828;
-    surface:                     #2f3436;
-    foreground:                  #d4be98;
-    selected:                    #7daea3;
-    active:                      #a9b665;
-    urgent:                      #ea6962;
 }
 
 /*
@@ -41,9 +36,9 @@ window {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               20px;
-    border-color:                @selected;
+    border-color:                @selection-background;
     cursor:                      "default";
-    background-color:            @background;
+    background-color:            @menu-background;
 }
 
 /*****----- Main Box -----*****/
@@ -54,7 +49,7 @@ mainbox {
     padding:                     0px;
     border:                      0px solid;
     border-radius:               0px;
-    border-color:                @selected;
+    border-color:                @selection-background;
     background-color:            transparent;
     children:                    [ "inputbar", "listview", "message" ];
 }
@@ -66,30 +61,31 @@ inputbar {
     padding:                     100px 80px;
     background-color:            transparent;
     background-image:            url("~/.cache/rofi-bg.png", width);
-    children:                    [ "textbox-prompt-colon", "dummy","prompt"];
+    children:                    ["prompt"];
 }
 
 
 
-dummy {
-    background-color:            transparent;
-}
 
+/* DISABLED
 textbox-prompt-colon {
     enabled:                     true;
     expand:                      false;
     str:                         "  System";
     padding:                     12px;
     border-radius:               12px;
-    background-color:            @urgent;
-    text-color:                  @background;
+    background-color:            @state-urgent;
+    text-color:                  @menu-background;
+    font:                        @font-name;
 }
+*/
+
 prompt {
     enabled:                     true;
     padding:                     12px;
     border-radius:               12px;
-    background-color:            @active;
-    text-color:                  @background;
+    background-color:            @state-active;
+    text-color:                  @menu-background;
 }
 
 /*****----- Listview -----*****/
@@ -116,12 +112,12 @@ element {
     enabled:                     true;
     padding:                     30px 10px;
     border-radius:               12px;
-    background-color:            @surface;
-    text-color:                  @foreground;
+    background-color:            @control-surface;
+    text-color:                  @text-primary;
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather bold 32";
+    font:                        @font-name-large;
     background-color:            transparent;
     text-color:                  inherit;
     cursor:                      inherit;
@@ -129,8 +125,8 @@ element-text {
     horizontal-align:            0.5;
 }
 element selected.normal {
-    background-color:            var(selected);
-    text-color:                  var(background);
+    background-color:            @selection-background;
+    text-color:                  @selection-warning;
 }
 
 /*****----- Message -----*****/
@@ -139,10 +135,11 @@ message {
     margin:                      0px;
     padding:                     15px;
     border-radius:               0px;
-    background-color:            @background-alt;
-    text-color:                  @foreground;
+    background-color:            @menu-background-alt;
+    text-color:                  @text-primary;
 }
 textbox {
+    font:                        @font-name;
     background-color:            inherit;
     text-color:                  inherit;
     vertical-align:              0.5;
