@@ -45,6 +45,43 @@ hl.window_rule({
 })
 
 
+
+-- =================================
+-- =  MARK: TAGGING RULES          =
+-- =================================
+
+-- Protected windows
+hl.window_rule({ match = { title = ".*FLX.*"              }, tag = "+protected" })
+hl.window_rule({ match = { title = ".*DCK.*"              }, tag = "+protected" })
+hl.window_rule({ match = { class = "discord"              }, tag = "+protected" })
+hl.window_rule({ match = { class = "code"                 }, tag = "+protected" })
+hl.window_rule({ match = { class = "^steam_app_.*"        }, tag = "+protected" })
+hl.window_rule({ match = { class = "Horizon-client"       }, tag = "+protected" })
+
+
+-- social windows
+hl.window_rule({ match = { class = "discord"              }, tag = "+social" })
+hl.window_rule({ match = { class = "signal"               }, tag = "+social" })
+hl.window_rule({ match = { title = "WhatsApp Web"         }, tag = "+social" })
+
+
+-- games
+hl.window_rule({ match = { class = "^steam_app_.*"        }, tag = "+games" })
+hl.window_rule({ match = { class = "gamescope"            }, tag = "+games" })
+
+
+-- media players
+hl.window_rule({ match =  {title = ".*YouTube.*"          }, tag = "+media" })
+hl.window_rule({ match =  {class = "Plex"                 }, tag = "+media" })
+
+
+-- Auto‑move to remote workspace
+hl.window_rule({ match = { class = "Horizon-client"       }, tag = "+remote" })
+hl.window_rule({ match = { class = "Wfica"                }, tag = "+remote" })
+hl.window_rule({ match = { initial_class = "Vmware"       }, tag = "+remote" })
+
+
+
 -- =================================
 -- =  MARK: POPUP HELPER FUNCTION  =
 -- =================================
@@ -75,7 +112,7 @@ end
 BarDropDown("bluetooth-manager", { class = "com.ezratweaver.AdwBluetooth" }, 500, 600, 40,0.85)
 BarDropDown("emoji-picker",      { class = "dev.anishroy.omniglyph"       }, 500, 600, 0,1 )
 BarDropDown("wallpaper-picker",  { class = "waypaper"                     }, 1300, 600, 40, 0.85)
-BarDropDown("localsend",         { class = "localsend"                    }, 500, 600, 40, 0.7)
+BarDropDown("localsend",         { class = "org.localsend.localsend_app"                    }, 500, 600, 40, 0.7)
 BarDropDown("home-assistant",    { initial_title = "Home Assistant"       }, 900, 1000, 40, 0.7)
 BarDropDown("flameshot",         { class = "flameshot"                    }, 500, 600, 40, 0.7)
 
@@ -104,6 +141,8 @@ hl.window_rule({
 })
 
 
+hl.window_rule({name = "games no idle", match = {tag = "games"}, idle_inhibit = "always"})
+
 -- Move all games to workspace 9 and make them fullscreen
 if file_exists("/tmp/gamestreaming") then
     hl.window_rule({name = "fullscreen-steam-games",match = { class = "^steam_app_.*" },monitor = "HEADLESS", fullscreen = true,  idle_inhibit = "always"})
@@ -127,43 +166,22 @@ hl.layer_rule({
 })
 
 
+
+hl.layer_rule({
+    name = "rofi-animations",
+    match = { namespace = "rofi" },
+    animation = "slide top",
+    ignore_alpha = 0.5
+})
+
+
 -- =================================
 -- =  MARK: SPECIAL WINDOW RULES   =
 -- =================================
 
--- YouTube tabs: keep opacity unchanged
-hl.window_rule({match = { title = ".*YouTube.*" },opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
-hl.window_rule({match = { class = "Plex" },opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
+-- Media tag:  keep opacity unchanged, and prevent sleep
+hl.window_rule({ match = {tag = "media"}, opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
 
-
-
-
-
--- =================================
--- =  MARK: TAGGING RULES          =
--- =================================
-
--- Protected windows
-hl.window_rule({ match = { title = ".*FLX.*"              }, tag = "protected" })
-hl.window_rule({ match = { title = ".*DCK.*"              }, tag = "protected" })
-hl.window_rule({ match = { class = "discord"              }, tag = "protected" })
-hl.window_rule({ match = { class = "code"                 }, tag = "protected" })
-hl.window_rule({ match = { class = "^steam_app_.*"        }, tag = "protected" })
-hl.window_rule({ match = { class = "Horizon-client"       }, tag = "protected" })
-
-
--- social windows
-hl.window_rule({ match = { class = "discord"       }, tag = "social" })
-hl.window_rule({ match = { class = "signal"        }, tag = "social" })
-hl.window_rule({ match = { title = "WhatsApp Web"  }, tag = "social" })
-
-
-
-
--- Auto‑move to remote workspace
-hl.window_rule({ match = { class = "Horizon-client" }, tag = "remote" })
-hl.window_rule({ match = { class = "Wfica"          }, tag = "remote" })
-hl.window_rule({ match = { initial_class = "Vmware" }, tag = "remote" })
 
 
 -- keyring prompts
@@ -174,12 +192,7 @@ hl.window_rule({ match = { class = "gcr-prompter"}, pin = true, float = true})
 -- =================================
 
 if hostname == "HyprStation-01" then
-    -- hl.window_rule({name = "flameshot-home",match = { class = "flameshot" },
-    --     float = true,
-    --     pin = true,
-    --     move = {0, -190},
-    --     size = {4520, 1920},
-    -- })
+    -- placeholder
 end
 
 
