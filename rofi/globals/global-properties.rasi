@@ -1,5 +1,6 @@
 * {
     font-name:                   "JetBrains Mono Nerd Font 10";
+    font-name-medium:            "JetBrains Mono Nerd Font 15";
     font-name-large:             "JetBrains Mono Nerd Font 20";
 
     menu-background:             rgb(29, 32, 33, 0.95);
