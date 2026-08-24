@@ -127,7 +127,8 @@
         "format-disabled":          "󰅛 disabled",
 
     // Click opens network manager applet
-        "on-click":   "adwaita-network",
+        //"on-click":   "adwaita-network",
+        "on-click": "~/.config/rofi/hyprltm/hyprltm-net",
         "tooltip":true
     },
 
