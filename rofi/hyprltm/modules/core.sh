@@ -14,7 +14,7 @@ fi
 #                           CONFIGURATION & THEMING
 # =============================================================================
 
-ROFI_THEME_NAME="${ROFI_THEME_NAME:-hyprltm-net}"
+ROFI_THEME_NAME="${ROFI_THEME_NAME:-hyprltm-net-custom}"
 
 if [[ -n "${ROFI_NETWORK_MANAGER_THEME:-}" && ! -r "$ROFI_NETWORK_MANAGER_THEME" ]]; then
     echo "$tr_startup_bad_theme ($ROFI_NETWORK_MANAGER_THEME) not found or not readable. Falling back to auto-detection." >&2
@@ -628,7 +628,7 @@ show_qrcode() {
 
     printf '%s' "$qr_string" > "$qr_data"
 
-    show_loading_notification "$tr_qrcode_generating"
+    show_loading_notification "$tr_qrcode_generating"1
     qrencode -o "$qr_file" -s 10 -m 2 < "$qr_data"
     kill_loading_notification
 
@@ -820,7 +820,7 @@ main_menu() {
     options+="$icon_bookmark_saved  $tr_saved_connections\n"
     options+="$icon_status_chart  $tr_status_short\n"
     options+="$icon_airplane  $tr_airplane_mode_message\n"
-    options+="$icon_close Exit"
+    options+="$icon_close  Exit"
 
     while true; do
         local choice=$(echo -e "$options" | display_menu 1 "$tr_main_menu_prompt" "")
