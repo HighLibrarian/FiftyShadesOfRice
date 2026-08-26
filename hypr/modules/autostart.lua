@@ -65,6 +65,9 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd ("tuned-adm profile balanced")
 
 
+    -- load pomodoro deamon
+    hl.exec_cmd ("tomat daemon start")
+
 
     -- load clipboard manager
     hl.exec_cmd("wl-paste --type text --watch cliphist store -max-items 200")

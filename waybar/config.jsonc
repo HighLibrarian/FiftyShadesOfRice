@@ -8,7 +8,8 @@
     "modules-left": 
     [
         "clock",
-        "pulseaudio"
+        "pulseaudio",
+        "custom/tomat"
           
         //"hyprland/window" - name of the active window
         
@@ -29,6 +30,17 @@
     ],
 
 
+
+    "custom/tomat":
+    {
+        "exec": "tomat status",
+        "exec-if": "tomat status | jq .class | grep -qv idle",
+        "interval": 1,
+        "return-type": "json",
+        "format": "{}",
+        "on-click": "tomat toggle",
+        "on-click-right": "tomat skip",
+    },
 
     // Clock: click toggles compact/full date format
     "clock": {
