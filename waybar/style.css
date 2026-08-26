@@ -119,3 +119,46 @@ tooltip {
 #bluetooth{
     margin-left: 15px;
 }
+
+/* Tomat styling for waybar */
+
+#custom-tomat {
+  padding: 1px 4px;
+  padding-left: 12px;
+  margin: 7px 7px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+/* Work sessions */
+#custom-tomat.work {
+  background-color: @red;
+  color: @bg0;
+}
+
+#custom-tomat.work-paused {
+  background-color: @orange;
+  color: @bg0;
+}
+
+/* Break sessions */
+#custom-tomat.break {
+  background-color: @aqua;
+  color: @bg0;
+}
+
+#custom-tomat.break-paused {
+  background-color: @bg3;
+  color: @fg;
+}
+
+/* Long break sessions */
+#custom-tomat.long-break {
+  background-color: @blue;
+  color: @bg0;
+}
+
+#custom-tomat.long-break-paused {
+  background-color: @purple;
+  color: @bg0;
+}
