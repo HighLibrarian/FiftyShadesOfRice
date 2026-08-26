@@ -14,6 +14,7 @@ alias ls "eza -l --icons"
 
 alias gtrep "cd ~/Repositories"
 alias gtdl "cd ~/Downloads"
+alias gtconf "cd ~/.config"
 alias gthome "cd ~"
 alias cls "clear"
 
