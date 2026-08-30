@@ -19,25 +19,26 @@ hl.on("hyprland.start", function ()
 
 
   -- Chain D-Bus update, systemd import, and keyring replacement sequentially
-  hl.exec_cmd("bash -c 'dbus-update-activation-environment --systemd --all && systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && gnome-keyring-daemon --replace --start --components=secrets,pkcs11,ssh'")
+  -- hl.exec_cmd("bash -c 'dbus-update-activation-environment --systemd --all && systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP && gnome-keyring-daemon --replace --start --components=secrets,pkcs11,ssh'")
 
   -- Wallpaper services
   hl.exec_cmd("awww-daemon") 
   hl.exec_cmd("waypaper --restore") 
   
   -- Desktop environment components
-  hl.exec_cmd("waybar") -- our top bar
-  hl.exec_cmd("hyprsunset") -- nightlight 
-  hl.exec_cmd("swaync") -- notifications
-  hl.exec_cmd("/usr/libexec/hyprpolkitagent")
+  hl.exec_cmd("waybar")                         -- our top bar
+  hl.exec_cmd("hyprsunset")                     -- nightlight 
+  hl.exec_cmd("swaync")                         -- notifications
+  hl.exec_cmd("/usr/libexec/hyprpolkitagent")   -- elevation service
   
-  -- applications
-
-  hl.exec_cmd("flatpak run com.discordapp.Discord")
-
+-- =================================
+-- =  MARK: Applications           =
+-- =================================
+  hl.exec_cmd("discord")
   hl.exec_cmd("~/AppImages/obsidian.appimage")
-  -- start onedrive
   hl.exec_cmd("onedrive --sync")
+
+
 
 -- =================================
 -- =  MARK: System specifc         =
@@ -55,8 +56,9 @@ hl.on("hyprland.start", function ()
     -- load you hypridle desktop profile 
     hl.exec_cmd("hypridle -c ~/.config/hypridle/hypridle-desktop.conf")
 
+
     -- load our secrets. note you might need to enter your password
-    hl.exec_cmd("~./config/hypr/scripts/get-secrets.sh")
+    -- hl.exec_cmd("~./config/hypr/scripts/get-secrets.sh")
 
     -- load lnxlink
     hl.exec_cmd ("~/.local/bin/lnxlink -c ~/.config/LNXlink/config.yaml")
@@ -64,10 +66,8 @@ hl.on("hyprland.start", function ()
     -- restore balanced powerplan
     hl.exec_cmd ("tuned-adm profile balanced")
 
-
     -- load pomodoro deamon
     hl.exec_cmd ("tomat daemon start")
-
 
     -- load clipboard manager
     hl.exec_cmd("wl-paste --type text --watch cliphist store -max-items 200")

@@ -71,8 +71,30 @@ hl.window_rule({ match = { class = "gamescope"            }, tag = "+games" })
 
 
 -- media players
-hl.window_rule({ match =  {title = ".*YouTube.*"          }, tag = "+media" })
-hl.window_rule({ match =  {class = "Plex"                 }, tag = "+media" })
+--hl.window_rule({ match =  {title = ".*YouTube.*"          }, tag = "+media" })
+--hl.window_rule({ match =  {class = "Plex"                 }, tag = "+media" })
+
+
+
+
+-- media players
+hl.window_rule({
+    match = { title = ".*YouTube.*" },
+    tag = "+media",
+    opacity = "1.0 override 1.0 override",
+    no_dim = true,
+    idle_inhibit = "always",
+})
+
+hl.window_rule({
+    match = { class = "Plex" },
+    tag = "+media",
+    opacity = "1.0 override 1.0 override",
+    no_dim = true,
+    idle_inhibit = "always",
+})
+
+
 
 
 -- Auto‑move to remote workspace
@@ -180,7 +202,7 @@ hl.layer_rule({
 -- =================================
 
 -- Media tag:  keep opacity unchanged, and prevent sleep
-hl.window_rule({ match = {tag = "media"}, opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
+hl.window_rule({ match = {tag = "media*"}, opacity = "1.0 override 1.0 override",no_dim = true, idle_inhibit = "always"})
 
 
 
