@@ -19,6 +19,7 @@
 !flameshot/
 !iris/
 !tomat/
+!fastfetch/
 
 # allow their contents (but NOT recursively unignore everything)
 hypr/*
@@ -38,6 +39,7 @@ OpenRGB/*
 flameshot/*
 iris/*
 tomat/*
+fastfetch/*
 # now unignore everything inside those folders
 !hypr/**
 !waybar/**
@@ -56,6 +58,7 @@ tomat/*
 !flameshot/**
 !iris/**
 !tomat/**
+!fastfetch/**
 
 # re-ignore specific files
 hypr/modules/monitors.lua
