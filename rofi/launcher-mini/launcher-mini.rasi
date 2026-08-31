@@ -1,0 +1,57 @@
+/* Load our color palette file */
+@import "~/.config/rofi/globals/global-properties.rasi"
+
+* {
+    font: @font-name-large;
+}
+
+window {
+    width: 330px;
+    location: center;
+    border-radius: 14px;
+    background-color: @menu-background;
+}
+
+mainbox {
+    padding: 15px;
+    background-color: transparent;
+    children: [listview];
+}
+
+listview {
+    columns: 3;
+    lines: 1;
+    fixed-columns: true;
+    fixed-height: true;
+    cycle: true;
+    scrollbar: false;
+    spacing: 12px;
+    layout: vertical;
+    background-color: transparent;
+}
+
+element {
+    padding: 22px 12px;
+    border-radius: 8px;
+    background-color: @control-surface;
+    text-color: @text-prompt;
+    cursor: pointer;
+}
+
+element selected.normal {
+    background-color: @selection-background;
+    text-color: @text-primary;
+    
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+}
+
+element-icon {
+    enabled: false;
+}
