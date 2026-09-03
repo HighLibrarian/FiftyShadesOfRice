@@ -102,6 +102,18 @@
                     "type": "toggle",
                     "command": "sh $HOME/.config/swaync/scripts/toggle-gamestreaming-command.sh",
                     "update-command": "sh $HOME/.config/swaync/scripts/toggle-gamestreaming-update.sh"
+                },
+                {
+                    "label": " 󰋱 ",
+                    "type": "toggle",
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-tomat-30min-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-tomat-30min-update.sh"
+                },
+                {
+                    "label": " 󰽏 ",
+                    "type": "toggle",
+                    "command": "sh $HOME/.config/swaync/scripts/toggle-tomat-45min-command.sh",
+                    "update-command": "sh $HOME/.config/swaync/scripts/toggle-tomat-45min-update.sh"
                 }
             ]
         }
