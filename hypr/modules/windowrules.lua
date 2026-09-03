@@ -153,7 +153,7 @@ hl.window_rule({match = { tag = "social" },workspace = "special:magic"})
 
 
 -- move obsisian to its own workspace
-hl.window_rule({match = { initial_class = "obsidian" },workspace = "special:obsidian"})
+hl.window_rule({match = { initial_title = "Obsidian" },workspace = "special:obsidian"})
 
 -- give special workspace windows another gradient
 hl.window_rule({
