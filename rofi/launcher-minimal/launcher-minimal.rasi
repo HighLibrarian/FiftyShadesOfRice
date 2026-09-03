@@ -1,0 +1,28 @@
+/*Load our color pallete file*/
+@import "~/.config/rofi/globals/global-properties.rasi"
+
+
+
+window {
+    width:              400px;
+    height:             100px;
+    location:           center;
+    border-radius:      14px;
+    background-color:   @menu-background;
+}
+
+mainbox {
+    background-color: transparent;
+}
+
+
+prompt {
+    background-color: transparent;
+    text-color: @text-prompt;
+    padding: 0px;
+}
+
+listview {
+    colums: 4;
+    lines: 1;
+}
